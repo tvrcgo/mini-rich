@@ -53,8 +53,7 @@ export default function Image (opts = {}) {
 
     commands: {
 
-      uploadFile (editor, file, cb) {
-        const url = 'http://faas-api.test.uae-2.uc.cn/api/v1/call/ulove/file_upload'
+      uploadFile (editor, { url, file, onOk }) {
         const xhr = new XMLHttpRequest()
         const fd = new FormData()
         fd.append('file', file)
@@ -62,7 +61,7 @@ export default function Image (opts = {}) {
         xhr.open('POST', url, true)
         xhr.onreadystatechange = () => {
           if (xhr.readyState === 4 && xhr.status === 200) {
-            cb && cb(xhr.responseText)
+            onOk && onOk(xhr.responseText)
           }
         }
         xhr.send(fd)

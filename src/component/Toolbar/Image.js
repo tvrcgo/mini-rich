@@ -15,10 +15,14 @@ export default class Image extends React.Component {
   }
 
   handleChange = () => {
-    const { editor } = this.props
+    const { editor, uploadUrl } = this.props
     const file = this.$file.files[0]
     if (editor) {
-      editor.uploadFile(file, this.onReady)
+      editor.uploadFile({
+        url: uploadUrl,
+        file,
+        onOk: this.onReady
+      })
       editor.showUploading(file)
     }
   }

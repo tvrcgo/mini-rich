@@ -27,6 +27,7 @@ export default class ContentEditor extends React.Component {
     return (
       <div className='contenteditor'>
         <Toolbar
+          {...this.props}
           editor={this.$editor}
         />
         <Editor

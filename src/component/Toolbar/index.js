@@ -6,10 +6,11 @@ import Image from './Image'
 import Video from './Video'
 import Clear from './Clear'
 
-const Provider = ({ children, ...props }) => {
+const Provider = (props) => {
+  const { children } = props
   if (children instanceof Array) {
     return React.Children.map(children, child => {
-      return Provider({ children: child, ...props })
+      return React.cloneElement(child, props)
     })
   } else {
     return React.cloneElement(children, props)
