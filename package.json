@@ -5,7 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "storybook": "start-storybook",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rimraf dist",
+    "build": "npm run clean && tsc",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -28,7 +30,9 @@
     "less-loader": "^4.1.0",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
-    "style-loader": "^0.23.1"
+    "rimraf": "^2.6.3",
+    "style-loader": "^0.23.1",
+    "typescript": "^3.3.4000"
   },
   "dependencies": {
     "immutable": "^4.0.0-rc.12",
