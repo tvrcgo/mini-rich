@@ -1,0 +1,37 @@
+{
+  "name": "mini-rich",
+  "version": "0.1.0",
+  "description": "mini richtext editor",
+  "main": "dist/index.js",
+  "scripts": {
+    "storybook": "start-storybook",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tvrcgo/mini-rich.git"
+  },
+  "keywords": [
+    "editor",
+    "slatejs"
+  ],
+  "author": "tvrcgo",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@storybook/react": "^5.0.5",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.1",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
+    "style-loader": "^0.23.1"
+  },
+  "dependencies": {
+    "immutable": "^4.0.0-rc.12",
+    "slate": "^0.44.12",
+    "slate-html-serializer": "^0.7.36",
+    "slate-react": "^0.21.18"
+  }
+}
