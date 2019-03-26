@@ -10,10 +10,10 @@ const Provider = (props) => {
   const { children } = props
   if (children instanceof Array) {
     return React.Children.map(children, child => {
-      return React.cloneElement(child, props)
+      return React.cloneElement(child, { ...props, ...child.props })
     })
   } else {
-    return React.cloneElement(children, props)
+    return React.cloneElement(children, { ...props, ...children.props })
   }
 }
 
