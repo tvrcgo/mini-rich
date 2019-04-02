@@ -4,9 +4,8 @@ export default class Image extends React.Component {
 
   onReady = (res) => {
     const { editor } = this.props
-    const resJson = JSON.parse(res)
-    const result = resJson.result
-    if (result && result.status === 200) {
+    const result = JSON.parse(res)
+    if (result && result.url) {
       console.log('upload done ->', result)
       editor.insertUploadedResult(result)
       // reset file element
