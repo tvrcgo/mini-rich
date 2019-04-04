@@ -27,7 +27,7 @@ export default function Heading (opts = {}) {
     onKeyDown(event, editor, next) {
       if (['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].some(type => editor.hasBlock(type))) {
         if (event.key === 'Enter') {
-          editor.splitBlock()
+          editor.enterBlock()
         }
       } else {
         return next()

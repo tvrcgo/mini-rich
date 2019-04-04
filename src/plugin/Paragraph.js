@@ -21,7 +21,7 @@ export default function Paragraph (opts = {}) {
       if (editor.hasBlock('paragraph')) {
         switch (event.key) {
           case 'Enter':
-            return editor.splitBlock()
+            return editor.enterBlock()
           default:
             return next()
         }
@@ -29,8 +29,45 @@ export default function Paragraph (opts = {}) {
       return next()
     },
 
-    commands: {},
-    queries: {},
+    commands: {
+
+      enterBlock (editor) {
+        if (editor.isEnd()) {
+          editor.insertAfter()
+        } else if (editor.isStart()) {
+          editor.insertBefore()
+        } else {
+          editor.splitBlock()
+        }
+      },
+
+      insertBefore (editor) {
+        editor
+          .moveBackward()
+          .insertBlock({
+            type: 'paragraph'
+          })
+          .moveForward()
+      },
+
+      insertAfter (editor) {
+        editor
+          .insertBlock({
+            type: 'paragraph'
+          })
+      }
+    },
+    queries: {
+      isEnd(editor) {
+        const focusBlock = editor.value.focusBlock
+        return editor.value.selection.focus.isAtEndOfNode(focusBlock)
+      },
+
+      isStart(editor) {
+        const focusBlock = editor.value.focusBlock
+        return editor.value.selection.focus.isAtStartOfNode(focusBlock)
+      }
+    },
   }
 }
 
