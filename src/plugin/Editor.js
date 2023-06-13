@@ -8,15 +8,16 @@ export default function Editor (opts = {}) {
     onKeyDown (event, editor, next) {
       console.log('Key =', event.key)
       if ((event.metaKey || event.ctrlKey) && event.key === 'a') {
-        const { start, end } = editor.value.selection
-        editor.deleteAtRange({
-          start, end
-        })
-        console.log('select all', editor.value.selection)
-        return
+        const native = window.getSelection()
+        console.log('native', native)
+        const range = native.getRangeAt(0)
+        console.log('range', range)
+        const contents = range.cloneContents()
+        console.log('select some', editor.value.fragment.text)
       }
       switch (event.key) {
         case 'Backspace':
+          console.log(editor.value.selection)
           return editor.deleteBackward()
         case 'Delete':
           return editor.deleteForward()
@@ -41,6 +42,7 @@ export default function Editor (opts = {}) {
     },
 
     commands: {
+      // remove marks in selection
       clearMarks (editor, type) {
         editor.value.marks
           .filter(mark => type ? mark.type === type : true)
@@ -48,9 +50,15 @@ export default function Editor (opts = {}) {
         editor.focus()
       },
 
+      // remove focus block
       removeBlock (editor) {
         editor.value.blocks
           .map(block => editor.removeNodeByKey(block.key))
+      },
+
+      // remove selection
+      removeSelection (editor) {
+
       }
     },
 

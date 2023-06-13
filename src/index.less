@@ -23,6 +23,7 @@
       font-weight: bold;
       user-select: none;
       font-size: 14px;
+      cursor: pointer;
 
       i {
         vertical-align: -6px;
@@ -77,9 +78,11 @@
 
     img {
       max-width: 100%;
+      cursor: pointer;
 
       &.focused {
-        border: 3px solid @primary-color;
+        // border: 3px solid @primary-color;
+        box-shadow: 0 0 5px 2px #bbb;
       }
     }
 
@@ -87,9 +90,11 @@
       width: 100%;
       max-width: 100%;
       background-color: #eee;
+      cursor: pointer;
 
       &.focused {
-        border: 3px solid @primary-color;
+        // border: 3px solid @primary-color;
+        box-shadow: 0 0 5px 2px #bbb;
       }
     }
   }
